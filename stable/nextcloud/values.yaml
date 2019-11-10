@@ -336,3 +336,8 @@ nodeSelector: {}
 tolerations: []
 
 affinity: {}
+
+certificates:
+  customCA: []
+  # - secret: custom-CA
+  # - secret: more-custom-CAs
