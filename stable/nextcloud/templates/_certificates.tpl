@@ -9,6 +9,10 @@
   - sh
   - -c
   - apk add --no-cache ca-certificates && update-ca-certificates
+  {{- if .Values.certificates.image.extraEnvVars }}
+  env:
+  {{- tpl (toYaml .Values.certificates.image.extraEnvVars) $ | nindent 2 }}
+  {{- end }}
   volumeMounts:
     - name: etc-ssl-certs
       mountPath: /etc/ssl/certs
