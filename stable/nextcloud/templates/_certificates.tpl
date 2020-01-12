@@ -3,8 +3,8 @@
 {{- define "certificates.initContainer" -}}
 {{- if .Values.certificates.customCAs }}
 - name: certificates
-  image: alpine:latest
-  imagePullPolicy: Always
+  image: "{{ .Values.certificates.image.repository }}:{{ .Values.certificates.image.tag }}"
+  imagePullPolicy: {{ .Values.certificates.image.imagePullPolicy }}
   command:
   - sh
   - -c

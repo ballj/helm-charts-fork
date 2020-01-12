@@ -341,3 +341,7 @@ certificates:
   customCA: []
   # - secret: custom-CA
   # - secret: more-custom-CAs
+  image:
+    repository: alpine
+    tag: latest
+    imagePullPolicy: Always
