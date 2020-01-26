@@ -45,6 +45,8 @@ spec:
       - ip: "127.0.0.1"
         hostnames:
         - "status.localhost"
+      initContainers:
+      {{- include "certificates.initContainer" . | indent 8 }}
       containers:
       - name: {{ template "dokuwiki.fullname" . }}
         image: {{ template "dokuwiki.image" . }}
@@ -95,6 +97,7 @@ spec:
         volumeMounts:
         - name: dokuwiki-data
           mountPath: /bitnami/dokuwiki
+        {{- include "certificates.volumeMount" . | indent 8 }}
 {{- if .Values.metrics.enabled }}
       - name: metrics
         image: {{ template "dokuwiki.metrics.image" . }}
@@ -126,3 +129,4 @@ spec:
       {{- else }}
         emptyDir: {}
       {{- end }}
+      {{- include "certificates.volumes" . | indent 6 }}
