@@ -12,6 +12,13 @@ spec:
     matchLabels:
       app: {{ template "dokuwiki.name" . }}
       release: "{{ .Release.Name }}"
+  strategy:
+    type: {{ .Values.DeploymentUpdate.type }}
+    {{- if eq .Values.DeploymentUpdate.type "RollingUpdate" }}
+    rollingUpdate:
+      maxSurge: {{ .Values.DeploymentUpdate.maxSurge }}
+      maxUnavailable: {{ .Values.DeploymentUpdate.maxUnavailable }}
+    {{- end}}
   template:
     metadata:
       labels:

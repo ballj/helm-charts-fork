@@ -35,6 +35,12 @@ image:
 ##
 # fullnameOverride:
 
+## Update strategy for Deployments
+DeploymentUpdate:
+  type: RollingUpdate
+  maxUnavailable: 25%
+  maxSurge: 25%
+
 ## User of the application
 ## ref: https://github.com/bitnami/bitnami-docker-dokuwiki#environment-variables
 ##
