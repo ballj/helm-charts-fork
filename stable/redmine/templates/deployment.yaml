@@ -7,6 +7,13 @@ spec:
   selector:
     matchLabels: {{- include "redmine.matchLabels" . | nindent 6 }}
   replicas: {{ .Values.replicas }}
+  strategy:
+    type: {{ .Values.updateStrategy.type }}
+    {{- if eq .Values.updateStrategy.type "RollingUpdate" }}
+    rollingUpdate:
+      maxSurge: {{ .Values.updateStrategy.maxSurge }}
+      maxUnavailable: {{ .Values.updateStrategy.maxUnavailable }}
+    {{- end}}
   template:
     metadata:
       labels: {{- include "redmine.labels" . | nindent 8 }}
