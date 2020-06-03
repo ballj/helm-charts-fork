@@ -146,6 +146,11 @@ The following table lists the configurable parameters of the nextcloud chart and
 | `readinessProbe.successThreshold`                            | Minimum consecutive successes for the probe             | `1`                                         |
 | `deploymentAnnotations`                                      | Annotations to be added at 'deployment' level           | not set                                     |
 | `podAnnotations`                                             | Annotations to be added at 'pod' level                  | not set                                     |
+| `certificates.image.repository`                              | Container sidecar image                                 | `alpine`                                    |
+| `certificates.image.tag`                                     | Container sidecar image tag                             | `latest`                                    |
+| `certificates.image.pullPolicy`                              | Container sidecar image pull policy                     | `image.pullPolicy`                          |
+| `certificates.image.pullSecrets`                             | Container sidecar image pull secrets                    | `image.pullSecrets`                         |
+| `certificates.extraEnvVars`                                  | Container sidecar extra environment variables (eg proxy)| `[]`                                        |
 
 > **Note**:
 >
